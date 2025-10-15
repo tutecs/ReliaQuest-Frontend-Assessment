@@ -27,10 +27,7 @@ export const Search = ({onChange}: {onChange: (input: string) => void}) => {
         },
         '& .MuiInputLabel-root': {
           color: 'rgba(255,255,255,.92)'
-        },
-        // '& .MuiOutlinedInput-notchedOutline': {
-        //   borderColor: 'rgba(255,255,255,.92)',
-        // },
+        }
       }}
     />
   );

@@ -1,13 +1,14 @@
 import React from 'react';
 import { createUseStyles } from 'react-jss';
 import { useGetPokemons } from '../../hooks/useGetPokemons';
-import { Search, usePokemonSearch } from './PokemonSearch';
+import { Search } from './PokemonSearch';
 import { PokemonItem } from './PokemonItem';
+import { usePokemonSearch } from '../../hooks/usePokemonSearch';
 
 export const PokemonList = () => {
   const classes = useStyles();
   const { pokemons, loading } = useGetPokemons();
-  const { filteredPokemons, handleSearchInputChange } = usePokemonSearch(pokemons);
+  const { filterFunction, handleSearchInputChange } = usePokemonSearch();
 
   return (
     <div className={classes.root}>
@@ -17,7 +18,7 @@ export const PokemonList = () => {
       </div>
       <div className={classes.list}>
         {loading && <div>Loading...</div>}
-        {filteredPokemons.map((pokemon) => (
+        {filterFunction(pokemons).map((pokemon) => (
           <PokemonItem key={pokemon.id} pokemon={pokemon} />
         ))}
       </div>
